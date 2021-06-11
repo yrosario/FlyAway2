@@ -32,6 +32,7 @@ public class RegisterServlet extends HttpServlet {
 		RegisterPassenger register = new RegisterPassenger();
 		if(register.add(fname,lname,age,street,city,state,country)) {
 			HttpSession session = request.getSession(true);
+			System.out.println("REGISTER USER ID " + register.getUserId() );
 			session.setAttribute("userId", register.getUserId());
 			response.sendRedirect("payment.jsp");
 		}

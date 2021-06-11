@@ -33,6 +33,8 @@ public class TicketManager {
 			
 			Flight flight1 = session.get(Flight.class, firstFlight);
 			Flight flight2 = session.get(Flight.class, secondFlight);
+			
+			System.out.println("USER ID is " + userId);
 			Passenger passenger = session.get(Passenger.class, userId);
 			
 			//Add ticket base how many tickets requested
@@ -49,6 +51,9 @@ public class TicketManager {
 				
 				passenger.add(tck1);
 				passenger.add(tck2);
+				
+				session.save(tck1);
+				session.save(tck2);
 			}
 			
 			session.save(passenger);

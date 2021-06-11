@@ -30,10 +30,10 @@ public class RegisterPassenger {
 		
 		try {
 			Passenger passenger = new Passenger(fname, lname, Integer.parseInt(age), street, city, state, country);
-			userId = passenger.getId();
 			session.save(passenger);
 			transaction.commit();
 			
+			userId = passenger.getId();
 			System.out.print("Passenger ID " + passenger.getId());
 			//userId = passenger.getId();
 			

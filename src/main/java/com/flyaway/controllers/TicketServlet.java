@@ -24,13 +24,12 @@ public class TicketServlet extends HttpServlet {
 		try {
 			
 			HttpSession session = request.getSession(true);
-			int firstFlight = Integer.parseInt((String)session.getAttribute("firstFlightId"));
-			int secondFlight = Integer.parseInt((String)session.getAttribute("secondFlightId"));
-			
-			int numPassengers = Integer.parseInt((String)session.getAttribute("numPassengers"));
+			Integer firstFlight = Integer.parseInt(session.getAttribute("firstFlightId").toString());
+			Integer secondFlight = Integer.parseInt(session.getAttribute("secondFlightId").toString());
+			Integer numPassengers = (Integer)session.getAttribute("numPassengers");
 		
-			int userId = Integer.parseInt(session.getAttribute("userId").toString());
-				
+			Integer userId = (Integer)session.getAttribute("userId");
+	
 				
 			System.out.println("RUNNING WELLLLLLLLLLLLLLLLLLLLLLLL");
 			
