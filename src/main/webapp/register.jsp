@@ -10,14 +10,22 @@
 </head>
 <body>
 	
-	<!-- Main div -->
-	<div class="container">
-	
-		<!-- Header div -->
-		<div><h1>Register</h1></div>
+   <div class="container">	<!-- Main div -->
+	<div>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header active">
+		      <a class="navbar-brand active" href="" >User Registration</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="search.jsp">Search</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
 		
 		<!-- Form div -->
-		<div class="row">
+		<div class="row container-fluid">
 			<form action="/FlyAway2/register" method="POST">
 			
 				<div class="form-group">

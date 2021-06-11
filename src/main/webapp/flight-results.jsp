@@ -15,11 +15,29 @@
 </head>
 <body>
 
-	<!-- Main div -->
-	<div class="container">
-	
-		<!-- Header div -->
-		<div id="header"><h1 id="headerTitle">Flight Results</h1></div>
+   <div class="container">	<!-- Main div -->
+	<div>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header active">
+		      <a class="navbar-brand active" href="" >Fligth Results</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="search.jsp">Search</a></li>
+		      <li>		
+		      	<!-- Log out button -->
+		      	   <form action="/FlyAway2/login" method="get">
+		      	   		<input type="hidden" name="logout" value="true">
+		  				<button class="btn btn-lg">
+		  					<span class="glyphicon glyphicon-log-out"></span> Log out
+          				</button>
+          			</form>
+          		
+          	</li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
 	
 		<!-- Body div -->
 		<div class="container" id="body">

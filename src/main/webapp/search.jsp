@@ -12,14 +12,25 @@
 </head>
 <body>
 
-	<!-- Main div -->
-	<div class="container">
-	
-		<!-- Header div -->
-		<div><h1>Search flights</h1></div>
+   <div class="container">	<!-- Main div -->
+	<div>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header active">
+		      <a class="navbar-brand active" href="" >Search Flights</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="">Home</a></li>
+		      <li>		
+          		 <a class="navbar-brand" href="admin-login.jsp" >Admin Login</a>
+          	</li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
 		
 		<!-- Form div -->
-		<div class="row">
+		<div class="row container-fluid">
 			<form class="form-inline"  action="/FlyAway2/search" method="GET">
 			
 				<div class="form-group">

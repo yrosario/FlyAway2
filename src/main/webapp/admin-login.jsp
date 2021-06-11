@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Login</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	
@@ -15,7 +15,7 @@
 	<div class="container">
 	
 		<!-- Header div -->
-		<div><h1>Search flights</h1></div>
+		<div><h1>Admin Login</h1></div>
 		
 		<!-- Form div -->
 		<div class="row">

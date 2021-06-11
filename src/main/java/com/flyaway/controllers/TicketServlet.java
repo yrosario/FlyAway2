@@ -30,14 +30,12 @@ public class TicketServlet extends HttpServlet {
 		
 			Integer userId = (Integer)session.getAttribute("userId");
 	
-				
-			System.out.println("RUNNING WELLLLLLLLLLLLLLLLLLLLLLLL");
+			response.setContentType("text/html");
 			
-			//PrintWriter out = response.getWriter();
 			//add ticket
 			TicketManager tckMngr = new TicketManager();
 			if(tckMngr.addTicket(firstFlight, secondFlight, numPassengers, userId))
-				out.println("Successful");
+				out.println("<h1>You have Successfully purchased the tickets!</h1>");
 			else
 				out.println("failed");
 				
