@@ -20,26 +20,26 @@
 		
 		<!-- Form div -->
 		<div class="row">
-			<form class="form-inline"  action="SearchServlet" method="POST">
+			<form class="form-inline"  action="/FlyAway2/search" method="GET">
 			
 				<div class="form-group">
-						<label>Departing From</label>
-					  	<select id="from" name="airline" class="form-control" required>
-    						<option value="1" selected>Boston</option>
-    						<option value="2">NY City</option>
-    						<option value="3">LA</option>
-    						<option value="4">Miami</option>
- 						 </select>
+				    <label>Departing From</label>
+					<select id="from" name="from" class="form-control" required>
+    					<option value="Boston">Boston</option>
+    					<option value="NY City">NY City</option>
+    					<option value="LA">LA</option>
+    					<option value="Miami">Miami</option>
+ 					</select>
 				</div>
 				
 				<div class="form-group">
-						<label>Destination</label>
-						<select id="to" name="airline" class="form-control" required>
-    						<option value="1">Boston</option>
-    						<option value="2" selected>NY City</option>
-    						<option value="3">LA</option>
-    						<option value="4">Miami</option>
- 						 </select>
+					<label>Destination</label>
+					<select id="to" name="to" class="form-control" required>
+    					<option value="Boston">Boston</option>
+    					<option value="NY City">NY City</option>
+    					<option value="LA" selected>LA</option>
+    					<option value="MIAMI">Miami</option>
+ 					</select>
 				</div>
 				
 				<div class="form-group">

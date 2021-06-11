@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -29,8 +28,7 @@ public class Passenger {
 	//One to many mapping between the passengers and tickets
 	//A passenger can have many ticket, but a ticket can belong to
 	//only one passenger
-	@OneToMany(fetch=FetchType.LAZY,
-			   mappedBy="passenger",
+	@OneToMany(mappedBy="passenger",
 		       cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
 			              CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Ticket> tickets;

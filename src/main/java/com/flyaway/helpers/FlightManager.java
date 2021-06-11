@@ -1,13 +1,14 @@
 package com.flyaway.helpers;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
-import com.flyaway.models.Flight3;
-import com.flyaway.models.Test;
+import com.flyaway.models.Flight;
 import com.flyaway.util.HibernateUtils;
 
 public class FlightManager {
@@ -19,6 +20,9 @@ public class FlightManager {
 	public FlightManager() {
 		
 		factory = HibernateUtils.getSessionFactory();
+	}
+	
+	private void beginSession() {
 		try {
 			session = factory.openSession();
 			transaction = session.beginTransaction();
@@ -29,15 +33,16 @@ public class FlightManager {
 	
 	public boolean addFlight(String from, String to, String departingDate,
 			String departingTime, String arrivalDate, String arrivalTime,
-			String airline, int capacity, int seatsLeft) {
+			String airline, int capacity, int seatsLeft, float price) {
 		
+		//Initialize session
+		beginSession();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
 		try {
-			Test flight = new Test(from, to);
+			Flight flight = new Flight(from, to, format.parse(departingDate), departingTime, format.parse(arrivalDate),
+					arrivalTime, airline, capacity, seatsLeft, price);
 			
-			//Flight3 flight = new Flight3("df");
-			//Test test = new Test(2);
 			session.save(flight);
 			transaction.commit();
 			return true;
@@ -46,6 +51,28 @@ public class FlightManager {
 			return false;
 		}finally {
 			session.close();
+		}
+	}
+	
+	//Get flights entity for all flights matching critiria
+	public List<Flight> searchFlight(String from, String to, String departingDate, int numberOfPassengers) {
+		
+		//Initialize session
+		beginSession();
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("DATE VALUE: " + from);
+		try {
+			Query<Flight> query = session.createQuery("FROM Flight WHERE date(departingDate)='" +departingDate + "' and leavingFrom='"+from+
+					"' and arrivingAt='"+to+"' and seatsLeft>='"+numberOfPassengers+"'", Flight.class);
+			
+			List<Flight> flights = query.getResultList();
+			
+			return flights;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return null;
 		}
 	}
 

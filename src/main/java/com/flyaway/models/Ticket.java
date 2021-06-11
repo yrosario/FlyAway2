@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,20 +22,19 @@ public class Ticket {
 	private float price;
 	
 	//Many to one mapping from ticket table to passenger table
-	@ManyToOne(fetch=FetchType.LAZY,
-			  cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
 			  CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="passengerId")
 	private Passenger passenger;
 	
-	/*
+	
 	//Many to one mapping from ticket table to flight table
-	@ManyToOne(fetch=FetchType.LAZY,
-				cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
 			    CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="flightId")
 	private Flight flight;
-	*/
+	
+	
 	public Ticket() {
 	}
 
@@ -87,14 +85,14 @@ public class Ticket {
 	public void setPassenger(Passenger passenger) {
 		this.passenger = passenger;
 	}
-/*
+
 	public Flight getFlight() {
 		return flight;
 	}
 
 	public void setFlight(Flight flight) {
 		this.flight = flight;
-	}*/
+	}
 
 	
 	

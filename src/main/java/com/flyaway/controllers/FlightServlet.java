@@ -28,6 +28,7 @@ public class FlightServlet extends HttpServlet {
 			String airline = request.getParameter("airline");
 			int capacity = Integer.parseInt(request.getParameter("capacity"));
 			int seatsLeft = Integer.parseInt(request.getParameter("seatsLeft"));
+			float price = Float.parseFloat(request.getParameter("price"));
 			
 			PrintWriter out = response.getWriter();
 			
@@ -38,7 +39,8 @@ public class FlightServlet extends HttpServlet {
 					" capacity : " + capacity + " seatsLeft : " + seatsLeft);
 			
 			FlightManager manager = new FlightManager();
-			if(manager.addFlight(from, to, departingDate, departingTime, arrivalDate, arrivalTime, airline, capacity, seatsLeft))
+			if(manager.addFlight(from, to, departingDate, departingTime, arrivalDate, arrivalTime, airline,
+								capacity, seatsLeft, price))
 				out.println("Flight added successfully");
 			else
 				out.println("Failed to add flight");

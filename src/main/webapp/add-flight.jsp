@@ -79,6 +79,11 @@
 				</div>
 				
 				<div class="form-group">
+					<label>price</label>
+					<input type="number" name="price" class="form-control" min = 0 step="0.01" required>
+				</div>
+				
+				<div class="form-group">
 					<button type="submit" class="btn btn-success"> Add</button>
 				</div>
 				

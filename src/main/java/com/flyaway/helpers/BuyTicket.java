@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.flyaway.models.Flight3;
 import com.flyaway.models.Passenger;
 import com.flyaway.models.Ticket;
 import com.flyaway.util.HibernateUtils;
@@ -33,7 +32,6 @@ public class BuyTicket {
 			//Ticket ticket = session.get(Ticket.class, ticketNum);
 			
 			Ticket ticket = new Ticket(34.34f);
-			Flight3 flight = new Flight3();
 			
 			//Associate passenger to a ticket and vice versa 
 			passenger.add(ticket);

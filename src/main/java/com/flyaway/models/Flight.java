@@ -5,54 +5,56 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@Entity
+@Table(name="flight")
+public class Flight {
 
-public class FlightOLD {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int flightId;
-	private String from;
-	private String to;
+	private String leavingFrom;
+	private String arrivingAt;
 	private Date departingDate;
 	private String departingTime;
 	private Date arrivalDate;
 	private String arrivalTime;
-	private String airline;
+	private String Airline;
 	private int capacity;
 	private int seatsLeft;
+	private float price;
 	
-	//One to many mapping between the flights and tickets
-	//A flight can have many ticket, but a ticket can belong to
-	//only one flight
-	/*@OneToMany(fetch=FetchType.LAZY,
-			mappedBy="flight",
+	//One to many mapping between the passengers and tickets
+	//A passenger can have many ticket, but a ticket can belong to
+	//only one passenger
+	@OneToMany(mappedBy="flight",
 		       cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
 			              CascadeType.PERSIST, CascadeType.REFRESH})
-	private List<Ticket> tickets;*/
-
-	public FlightOLD() {
-		super();
+	private List<Ticket> tickets;
+	
+	public Flight() {
+		
 	}
 
-
-	public FlightOLD(String from, String to, Date departingDate, String departingTime, Date arrivalDate,
-			String arrivalTime, String airline, int capacity, int seatsLeft) {
+	public Flight(String leavingFrom, String arrivingAt, Date departingDate, String departingTime, Date arrivalDate,
+			String arrivalTime, String airline, int capacity, int seatsLeft, float price) {
 		super();
-		this.from = from;
-		this.to = to;
+		this.leavingFrom = leavingFrom;
+		this.arrivingAt = arrivingAt;
 		this.departingDate = departingDate;
 		this.departingTime = departingTime;
 		this.arrivalDate = arrivalDate;
 		this.arrivalTime = arrivalTime;
-		this.airline = airline;
+		Airline = airline;
 		this.capacity = capacity;
 		this.seatsLeft = seatsLeft;
+		this.price = price;
 	}
 
 
@@ -60,21 +62,24 @@ public class FlightOLD {
 		return flightId;
 	}
 
-
-	public String getFrom() {
-		return from;
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
 	}
 
-	public void setFrom(String from) {
-		this.from = from;
+	public String getLeavingFrom() {
+		return leavingFrom;
 	}
 
-	public String getTo() {
-		return to;
+	public void setLeavingFrom(String leavingFrom) {
+		this.leavingFrom = leavingFrom;
 	}
-	
-	public void setTo(String to) {
-		this.to = to;
+
+	public String getArrivingAt() {
+		return arrivingAt;
+	}
+
+	public void setArrivingAt(String arrivingAt) {
+		this.arrivingAt = arrivingAt;
 	}
 
 	public Date getDepartingDate() {
@@ -97,8 +102,8 @@ public class FlightOLD {
 		return arrivalDate;
 	}
 
-	public void setReturningDate(Date returningDate) {
-		this.arrivalDate = returningDate;
+	public void setArrivalDate(Date arrivalDate) {
+		this.arrivalDate = arrivalDate;
 	}
 
 	public String getArrivalTime() {
@@ -110,11 +115,11 @@ public class FlightOLD {
 	}
 
 	public String getAirline() {
-		return airline;
+		return Airline;
 	}
 
-	public void setAirlineId(String airline) {
-		this.airline = airline;
+	public void setAirline(String airline) {
+		Airline = airline;
 	}
 
 	public int getCapacity() {
@@ -132,19 +137,30 @@ public class FlightOLD {
 	public void setSeatsLeft(int seatsLeft) {
 		this.seatsLeft = seatsLeft;
 	}
+	
+	
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
 
 	@Override
 	public String toString() {
-		return "Flight [id=" + flightId + ", from=" + from + ", to=" + to + ", departingDate=" + departingDate
-				+ ", departingTime=" + departingTime + ", arrivalDate=" + arrivalDate + ", arrivalTime=" + arrivalTime
-				+ ", airlineId=" + airline + ", capacity=" + capacity + ", seatsLeft=" + seatsLeft + "]";
+		return "Flight [flightId=" + flightId + ", leavingFrom=" + leavingFrom + ", arrivingAt=" + arrivingAt
+				+ ", departingDate=" + departingDate + ", departingTime=" + departingTime + ", arrivalDate="
+				+ arrivalDate + ", arrivalTime=" + arrivalTime + ", Airline=" + Airline + ", capacity=" + capacity
+				+ ", seatsLeft=" + seatsLeft + ", price=" + price + "]";
 	}
 
-	/*public List<Ticket> getTickets() {
+	public List<Ticket> getTickets() {
 		return tickets;
-	}*/
+	}
 
-/*	public void setTickets(List<Ticket> tickets) {
+	public void setTickets(List<Ticket> tickets) {
 		this.tickets = tickets;
 	}
 	
@@ -158,9 +174,11 @@ public class FlightOLD {
 		tickets.add(newTicket);
 		
 		//add passenger to ticket table
-		//newTicket.setFlight(this);
+		newTicket.setFlight(this);
 	}
-	*/
+	
+	
 
+	
 	
 }
