@@ -12,6 +12,7 @@ public class RegisterPassenger {
 	private SessionFactory factory;
 	private Session session;
 	private Transaction transaction;
+	private int userId;
 	
 	public RegisterPassenger() {
 		
@@ -29,8 +30,12 @@ public class RegisterPassenger {
 		
 		try {
 			Passenger passenger = new Passenger(fname, lname, Integer.parseInt(age), street, city, state, country);
+			userId = passenger.getId();
 			session.save(passenger);
 			transaction.commit();
+			
+			System.out.print("Passenger ID " + passenger.getId());
+			//userId = passenger.getId();
 			
 			return true;
 		}catch(Exception e) {
@@ -41,6 +46,11 @@ public class RegisterPassenger {
 		}
 		
 	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	
 
 
 }

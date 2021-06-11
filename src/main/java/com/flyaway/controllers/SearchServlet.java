@@ -16,9 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.flyaway.helpers.FlightManager;
 import com.flyaway.models.Flight;
 
-/**
- * Servlet implementation class SearchServlet
- */
+
 @WebServlet("/search")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,27 +28,32 @@ public class SearchServlet extends HttpServlet {
 		String to = request.getParameter("to");
 		String departing = request.getParameter("departing");
 		String returning = request.getParameter("returning");
-		String numPassangers = request.getParameter("numPassangers");
+		int numPassengers;
+		
 		
 		//PrintWriter out = response.getWriter();
 		//out.println(to);
-		
-		
+
 		try{
+				
 			//Store the flight information in a session
 			HttpSession session = request.getSession();
 
 			//Check if flights are stored in the session
 			if(session.getAttribute("depFlights") == null) {
+				
+				numPassengers = Integer.parseInt(request.getParameter("numPassengers"));
+				
 				//Get a list of departing flights based on the users passed in parameters
 				FlightManager manager = new FlightManager();
-				List<Flight> depFlights = manager.searchFlight(from, to, departing, Integer.parseInt(numPassangers));
+				List<Flight> depFlights = manager.searchFlight(from, to, departing, numPassengers);
 			
 				//Get a list of returning flights based on the users passed in parameters
-				List<Flight> retFlights = manager.searchFlight(to, from, returning, Integer.parseInt(numPassangers));
+				List<Flight> retFlights = manager.searchFlight(to, from, returning, numPassengers);
 			
 				session.setAttribute("depFlights", depFlights);
 				session.setAttribute("retFlights", retFlights);
+				session.setAttribute("numPassengers", numPassengers);
 			}else {
 				System.out.println("FIRST FLIGHT " + request.getParameter("flightId"));
 				if(session.getAttribute("firstFlightId") == null)

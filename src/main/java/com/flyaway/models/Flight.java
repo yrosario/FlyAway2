@@ -25,7 +25,7 @@ public class Flight {
 	private String departingTime;
 	private Date arrivalDate;
 	private String arrivalTime;
-	private String Airline;
+	private String airline;
 	private int capacity;
 	private int seatsLeft;
 	private float price;
@@ -51,7 +51,7 @@ public class Flight {
 		this.departingTime = departingTime;
 		this.arrivalDate = arrivalDate;
 		this.arrivalTime = arrivalTime;
-		Airline = airline;
+		this.airline = airline;
 		this.capacity = capacity;
 		this.seatsLeft = seatsLeft;
 		this.price = price;
@@ -115,11 +115,11 @@ public class Flight {
 	}
 
 	public String getAirline() {
-		return Airline;
+		return airline;
 	}
 
 	public void setAirline(String airline) {
-		Airline = airline;
+		this.airline = airline;
 	}
 
 	public int getCapacity() {
@@ -152,7 +152,7 @@ public class Flight {
 	public String toString() {
 		return "Flight [flightId=" + flightId + ", leavingFrom=" + leavingFrom + ", arrivingAt=" + arrivingAt
 				+ ", departingDate=" + departingDate + ", departingTime=" + departingTime + ", arrivalDate="
-				+ arrivalDate + ", arrivalTime=" + arrivalTime + ", Airline=" + Airline + ", capacity=" + capacity
+				+ arrivalDate + ", arrivalTime=" + arrivalTime + ", Airline=" + airline + ", capacity=" + capacity
 				+ ", seatsLeft=" + seatsLeft + ", price=" + price + "]";
 	}
 

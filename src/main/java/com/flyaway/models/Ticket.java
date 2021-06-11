@@ -19,7 +19,6 @@ public class Ticket {
 	private int id;
 	private Date purchasedDate;
 	private String seatNum;
-	private float price;
 	
 	//Many to one mapping from ticket table to passenger table
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, 
@@ -36,13 +35,9 @@ public class Ticket {
 	
 	
 	public Ticket() {
-	}
-
-	public Ticket(float price) {
-		super();
-		this.price = price;
 		purchasedDate = new Date();
 	}
+
 
 	public int getId() {
 		return id;
@@ -64,18 +59,9 @@ public class Ticket {
 		this.seatNum = seatNum;
 	}
 
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-
 	@Override
 	public String toString() {
-		return "Ticket [id=" + id + ", purchasedDate=" + purchasedDate + ", seatNum=" + seatNum + ", price=" + price
-				+ "]";
+		return "Ticket [id=" + id + ", purchasedDate=" + purchasedDate + ", seatNum=" + seatNum + "]";
 	}
 
 	public Passenger getPassenger() {

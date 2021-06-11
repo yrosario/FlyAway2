@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.flyaway.helpers.TicketManager;
 
@@ -21,17 +22,26 @@ public class TicketServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		//out.print("flightNo " + no + " price " + price);
 		try {
-			int flightNum = Integer.parseInt(request.getParameter("flightNum"));
-			float price = Float.parseFloat(request.getParameter("price"));
-			out.print("flightNo " + price);// + " price " + price);
+			
+			HttpSession session = request.getSession(true);
+			int firstFlight = Integer.parseInt((String)session.getAttribute("firstFlightId"));
+			int secondFlight = Integer.parseInt((String)session.getAttribute("secondFlightId"));
+			
+			int numPassengers = Integer.parseInt((String)session.getAttribute("numPassengers"));
+		
+			int userId = Integer.parseInt(session.getAttribute("userId").toString());
+				
+				
+			System.out.println("RUNNING WELLLLLLLLLLLLLLLLLLLLLLLL");
 			
 			//PrintWriter out = response.getWriter();
 			//add ticket
 			TicketManager tckMngr = new TicketManager();
-			if(tckMngr.addTicket(flightNum, price))
+			if(tckMngr.addTicket(firstFlight, secondFlight, numPassengers, userId))
 				out.println("Successful");
 			else
 				out.println("failed");
+				
 				
 		}catch(Exception e) {
 			e.printStackTrace();

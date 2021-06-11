@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.flyaway.helpers.RegisterPassenger;
 
@@ -29,10 +30,14 @@ public class RegisterServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		RegisterPassenger register = new RegisterPassenger();
-		if(register.add(fname,lname,age,street,city,state,country))
-			out.println("Registration Successful");
-		else
+		if(register.add(fname,lname,age,street,city,state,country)) {
+			HttpSession session = request.getSession(true);
+			session.setAttribute("userId", register.getUserId());
+			response.sendRedirect("payment.jsp");
+		}
+		else {
 			out.println("Registration failed");
+		}
 		
 	}
 

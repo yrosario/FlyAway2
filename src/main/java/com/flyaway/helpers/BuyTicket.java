@@ -31,12 +31,12 @@ public class BuyTicket {
 			Passenger passenger = session.get(Passenger.class, passengerId);
 			//Ticket ticket = session.get(Ticket.class, ticketNum);
 			
-			Ticket ticket = new Ticket(34.34f);
+			//Ticket ticket = new Ticket(34.34f);
 			
 			//Associate passenger to a ticket and vice versa 
-			passenger.add(ticket);
+			//passenger.add(ticket);
 			//flight.add(ticket);
-			session.save(ticket);
+			//.save(ticket);
 			transaction.commit();
 			return true;
 		}catch(Exception e) {
