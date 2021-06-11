@@ -10,14 +10,32 @@
 </head>
 <body>
 
-	<!-- Main div -->
-	<div class="container">
-	
-		<!-- Header div -->
-		<div><h1>Add Flight</h1></div>
+   <div class="container">	<!-- Main div -->
+	<div>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Add Flight</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li><a href="admin.jsp">Home</a></li>
+		      <li>		
+		      	<!-- Log out button -->
+		      	   <form action="/FlyAway2/login" method="get">
+		      	   		<input type="hidden" name="logout" value="true">
+		  				<button class="btn btn-lg">
+		  					<span class="glyphicon glyphicon-log-out"></span> Log out
+          				</button>
+          			</form>
+          		
+          	</li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
 		
 		<!-- Form div -->
-		<div class="row">
+		<div class="row container-fluid">
 			<form action="/FlyAway2/add-flight" method="POST">
 			
 				<div class="form-group">

@@ -19,6 +19,7 @@ public class HibernateUtils {
 				config.addAnnotatedClass(com.flyaway.models.Passenger.class);
 				config.addAnnotatedClass(com.flyaway.models.Ticket.class);
 				config.addAnnotatedClass(com.flyaway.models.Flight.class);
+				config.addAnnotatedClass(com.flyaway.models.Admin.class);
 
 	
 				builder = new StandardServiceRegistryBuilder().applySettings(config.getProperties());

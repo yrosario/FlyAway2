@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.flyaway.helpers.FlightManager;
 
@@ -18,6 +19,12 @@ public class FlightServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			
+			//Check if user has log in
+			HttpSession session = request.getSession(true);
+			if(session.getAttribute("userId") == null)
+				response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			
 			//Get params from form
 			String from = request.getParameter("from");
 			String to = request.getParameter("to");
