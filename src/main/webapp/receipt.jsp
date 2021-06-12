@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add Flight</title>
+<title>receipt</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 		      <a class="navbar-brand active" href="" >Search Flights</a>
 		    </div>
 		    <ul class="nav navbar-nav">
-		      <li><a href="search.jsp">Search</a></li>
+		      <li><a href="search.jsp">Receipt</a></li>
 		      <li>		
           		 <a class="navbar-brand" href="admin-login.jsp" >Admin Login</a>
           	</li>
@@ -32,6 +32,10 @@
 		</nav>
 	</div>
 	
+	
+		<hr>
+			<h1>Congratulations your purchase was Successful!</h1>
+		<hr>
 		<hr>
 		<h2>Departure Flight</h2>
 		<c:forEach var="flightList" items="${sessionScope.depFlights}">
@@ -84,9 +88,6 @@
 		
 		<br>
 		<hr>
-		<form action="register.jsp" method="get">
-			<button class="btn btn-success">Buy!</button>
-		</form>
 		
 		<!-- Sum total price -->
 		<script type="text/javascript"> 

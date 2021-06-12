@@ -38,6 +38,7 @@ public class FlightManager {
 		//Initialize session
 		beginSession();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		
 	
 		try {
 			Flight flight = new Flight(from, to, format.parse(departingDate), departingTime, format.parse(arrivalDate),
@@ -60,7 +61,7 @@ public class FlightManager {
 		//Initialize session
 		beginSession();
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 		System.out.println("DATE VALUE: " + from);
 		try {
 			Query<Flight> query = session.createQuery("FROM Flight WHERE date(departingDate)='" +departingDate + "' and leavingFrom='"+from+
@@ -68,6 +69,8 @@ public class FlightManager {
 			
 			List<Flight> flights = query.getResultList();
 			
+			/*for(Flight fl : flights)
+				System.out.println("Flight List : " + dateFormat.parse(fl.getDepartingTime()));*/
 			return flights;
 		}catch(Exception e)
 		{

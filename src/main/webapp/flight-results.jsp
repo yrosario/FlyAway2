@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html>
 <html>
@@ -25,14 +26,7 @@
 		    <ul class="nav navbar-nav">
 		      <li><a href="search.jsp">Search</a></li>
 		      <li>		
-		      	<!-- Log out button -->
-		      	   <form action="/FlyAway2/login" method="get">
-		      	   		<input type="hidden" name="logout" value="true">
-		  				<button class="btn btn-lg">
-		  					<span class="glyphicon glyphicon-log-out"></span> Log out
-          				</button>
-          			</form>
-          		
+          		 <a class="navbar-brand" href="admin-login.jsp" >Admin Login</a>
           	</li>
 		    </ul>
 		  </div>
@@ -41,6 +35,7 @@
 	
 		<!-- Body div -->
 		<div class="container" id="body">
+			<table class="table">
 				<!-- check if first flight has been selected -->
 				<c:choose>
 					 <c:when test="${empty sessionScope.firstFlightId}">
@@ -52,8 +47,7 @@
 					</c:when>
 				</c:choose>
 				
-				<p>${sessionScope.firstFlightId}</p>
-				<p>${sessionScope.secondFlightId}</p>
+
 				
 				<!-- Check if the user has selected to flights and redirect if the user has -->
 				<script type="text/javascript">
@@ -70,11 +64,12 @@
 				
 			    <!-- Print flight list -->
 				<c:forEach var="flightList" items="${tempFlightList}">
-                     
+                     <tr>
                      <!-- Print flight detail infomation -->
                     <div class="row">
                     	<div class="col">
-                    		${flightList.departingTime}
+                    		<th>
+                    		${flightList.departingTime} -
                     		${flightList.arrivalTime}
                     		<br>
                     		${flightList.leavingFrom}
@@ -82,14 +77,17 @@
                     		${flightList.arrivingAt}
                     		<br>
                     		${flightList.seatsLeft}
+                    		</th>
                     	</div>	    	
 	    				
+	    			<th>
 	    			<!-- Print flight cost -->
 	    			<div class="col">
 	    					<label>$</label>${flightList.price}
 	    			</div>
-	    				
+	    			</th>
 	    			<!-- Select flight button -->
+	    			<th>
 	    			<div class="col">
 	    					<form action="/FlyAway2/search" method="GET" >
 	    						<input type="hidden" name="flightId" value="${flightList.flightId}">
@@ -97,10 +95,14 @@
 	    					</form>
 	    				</div>
 	    			</div>
+	    			</th>
+
 	    			
-	    			
+	    			</tr>
 				</c:forEach>
+				</table>
 		</div>
+		<hr/>
 		
 
   			

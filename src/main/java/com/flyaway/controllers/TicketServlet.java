@@ -35,7 +35,7 @@ public class TicketServlet extends HttpServlet {
 			//add ticket
 			TicketManager tckMngr = new TicketManager();
 			if(tckMngr.addTicket(firstFlight, secondFlight, numPassengers, userId))
-				out.println("<h1>You have Successfully purchased the tickets!</h1>");
+				response.sendRedirect("receipt.jsp");
 			else
 				out.println("failed");
 				
