@@ -78,6 +78,16 @@
 		</div>
 	</div>
 	
+	<!-- Invalidate session -->
+     <%
+
+          session=request.getSession(false);
+
+        if(session!=null)
+         {
+          session.invalidate();
+         }
+       %>
 
 </body>
 </html>

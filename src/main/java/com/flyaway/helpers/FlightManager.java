@@ -32,8 +32,8 @@ public class FlightManager {
 	}
 	
 	public boolean addFlight(String from, String to, String departingDate,
-			String departingTime, String arrivalDate, String arrivalTime,
-			String airline, int capacity, int seatsLeft, float price) {
+							String departingTime, String arrivalDate, String arrivalTime,
+							String airline, int capacity, int seatsLeft, float price) {
 		
 		//Initialize session
 		beginSession();
@@ -61,16 +61,12 @@ public class FlightManager {
 		//Initialize session
 		beginSession();
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-		System.out.println("DATE VALUE: " + from);
 		try {
 			Query<Flight> query = session.createQuery("FROM Flight WHERE date(departingDate)='" +departingDate + "' and leavingFrom='"+from+
 					"' and arrivingAt='"+to+"' and seatsLeft>='"+numberOfPassengers+"'", Flight.class);
 			
 			List<Flight> flights = query.getResultList();
 			
-			/*for(Flight fl : flights)
-				System.out.println("Flight List : " + dateFormat.parse(fl.getDepartingTime()));*/
 			return flights;
 		}catch(Exception e)
 		{
